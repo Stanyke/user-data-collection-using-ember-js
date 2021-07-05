@@ -22,6 +22,10 @@ input::placeholder {
   margin-top: 20px;
 }
 
+.hide {
+  display: none;
+}
+
 .navbar {
   background: var(--nav-bg);
 }
@@ -56,4 +60,50 @@ input::placeholder {
 .user-select:hover > p{
   color: var(--font-color2);
   text-decoration: underline;
+}
+
+.filter-box {
+  width: 300px;
+  font-weight: bolder;
+}
+
+.filter-text {
+  margin: auto;
+}
+
+.filter-dropdown select {
+  width: 100%;
+  padding: 10px 0px;
+}
+
+.filter-box,
+.user-status {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  margin: auto;
+  color: var(--font-color1);
+}
+
+.user-status > div:nth-child(1) {
+  font-size: small;
+  margin: auto;
+}
+
+.badge {
+  background-color: var(--font-color2);
+  padding: 10px;
+  width: 100%;
+  margin: auto;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+button {
+  outline: 0;
+  border: 0;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  &:hover {
+    cursor: pointer;
+    color: var(--font-color1)
+  }
 }
