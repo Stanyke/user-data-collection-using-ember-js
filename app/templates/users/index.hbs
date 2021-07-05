@@ -1,23 +1,81 @@
 {{page-title 'User'}}
 <div class="container">
+
+    <br/>
+    <div class="filter-box">
+      <div class="filter-text">
+        Filter Results
+      </div>
+      <div class="filter-dropdown">
+        <select onchange={{action 'applyFilter' value="target.value"}}>
+          <option value="1">Available Users</option>
+          <option value="2">Archived Users</option>
+          <option value="3">All Users</option>
+        </select>
+      </div>
+    </div>
+
   <div class="columns is-centered">
 
+
     {{#each @model as |user|}}
-      <div class="column">
 
-        <LinkTo @route="users.user" @model={{user}}>
-          <div class="user-select is-220px">
-            <img
-              class="is-pulled-left"
-              src={{user.image}}
-              width="60px"
-              alt="profile-image"
-            />
-            <p>{{user.name}}</p>
+        {{#if filterForAvailable}}
+          {{#if (not user.is-archived)}}
+            <div class="column">
+              <LinkTo @route="users.user" @model={{user}}>
+                <div class="user-select is-220px">
+                  <img
+                    class="is-pulled-left"
+                    src={{user.image}}
+                    width="60px"
+                    alt="profile-image"
+                  />
+                  <p>{{user.name}}</p>
+                </div>
+              </LinkTo>
+            </div>
+          {{else}}
+            <div class="column hide"></div>
+          {{/if}}
+        {{/if}}
+
+        {{#if filterForArchived}}
+          {{#if user.is-archived}}
+            <div class="column">
+              <LinkTo @route="users.user" @model={{user}}>
+                <div class="user-select is-220px">
+                  <img
+                    class="is-pulled-left"
+                    src={{user.image}}
+                    width="60px"
+                    alt="profile-image"
+                  />
+                  <p>{{user.name}}</p>
+                </div>
+              </LinkTo>
+            </div>
+          {{else}}
+            <div class="column hide"></div>
+          {{/if}}
+        {{/if}}
+
+        {{#if filterForAll}}
+          <div class="column">
+            <LinkTo @route="users.user" @model={{user}}>
+              <div class="user-select is-220px">
+                <img
+                  class="is-pulled-left"
+                  src={{user.image}}
+                  width="60px"
+                  alt="profile-image"
+                />
+                <p>{{user.name}}</p>
+              </div>
+            </LinkTo>
           </div>
-        </LinkTo>
+        {{/if}}
 
-      </div>
     {{/each}}
 
   </div>

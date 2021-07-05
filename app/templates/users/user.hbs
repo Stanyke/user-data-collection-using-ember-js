@@ -25,6 +25,20 @@
 
         {{!-- Place the component to archive/unarchive users here --}}
 
+        <div class="user-status">
+          <div>Archive Status:</div>
+          
+          {{#if (or @model.is-archived archiveButtonClicked)}}
+            <div class="badge">
+              Archived
+            </div>
+          {{else}}
+            <div>
+              <button class="badge" type="button" onclick={{action 'archiveUser' @model.id}}>Click to archive</button>
+            </div>
+          {{/if}}
+        </div>
+        
       </div>
     </div>
   </div>
